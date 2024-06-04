@@ -45,7 +45,6 @@ class _MyAppState extends State<MyApp> {
       crossAxisAlignment: CrossAxisAlignment.start,
       blankSpace: 20,
       velocity: 40,
-      startAfter: Duration(seconds: 3),
       pauseAfterRound: Duration(seconds: 3),
       showFadingOnlyWhenScrolling: false,
       fadingEdgeStartFraction: 0.0,

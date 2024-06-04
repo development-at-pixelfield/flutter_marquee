@@ -528,7 +528,7 @@ class _MarqueeState extends State<Marquee> with SingleTickerProviderStateMixin {
   Duration get _decelerationDuration => widget.decelerationDuration;
 
   /// A timer that is fired at the start of each round.
-  bool _canRun = false;
+  bool _canRun = true;
   bool _running = false;
   bool _isOnPause = false;
   int _roundCounter = 0;
@@ -719,12 +719,20 @@ class _MarqueeState extends State<Marquee> with SingleTickerProviderStateMixin {
         break;
     }
 
+    if (_canRun == false) {
+      return Text(
+        widget.text,
+        style: widget.style,
+        textAlign: _canRun ? TextAlign.left : TextAlign.center,
+        textScaler: widget.textScaleFactor == null ? null : TextScaler.linear(widget.textScaleFactor!),
+      );
+    }
+
     Widget marquee = ListView.builder(
       controller: _controller,
       scrollDirection: widget.scrollAxis,
       reverse: widget.textDirection == TextDirection.rtl,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: _canRun ? 8 : 1,
       itemBuilder: (_, i) {
         final text = i.isEven
             ? Text(
