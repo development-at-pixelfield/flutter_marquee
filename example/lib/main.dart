@@ -16,11 +16,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Marquee',
       home: Scaffold(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.grey.shade200,
         body: ListView(
           padding: EdgeInsets.only(top: 50),
           children: [
-            _buildMarquee(),
             _buildComplexMarquee(),
           ].map(_wrapWithStuff).toList(),
         ),
@@ -35,16 +34,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  Widget _buildMarquee() {
-    return Marquee(
-      key: Key("$_useRtlText"),
-      text: !_useRtlText
-          ? 'There once was a boy who told this story about a boy: "'
-          : 'פעם היה ילד אשר סיפר סיפור על ילד:"',
-      velocity: 50.0,
-    );
-  }
-
   Widget _buildComplexMarquee() {
     return Marquee(
       key: Key("$_useRtlText"),
@@ -55,16 +44,16 @@ class _MyAppState extends State<MyApp> {
       scrollAxis: Axis.horizontal,
       crossAxisAlignment: CrossAxisAlignment.start,
       blankSpace: 20,
-      velocity: 100,
-      pauseAfterRound: Duration(seconds: 1),
-      showFadingOnlyWhenScrolling: true,
-      fadingEdgeStartFraction: 0.1,
-      fadingEdgeEndFraction: 0.1,
-      numberOfRounds: 3,
-      startPadding: 10,
-      accelerationDuration: Duration(seconds: 1),
-      accelerationCurve: Curves.linear,
-      decelerationDuration: Duration(milliseconds: 500),
+      velocity: 40,
+      startAfter: Duration(seconds: 3),
+      pauseAfterRound: Duration(seconds: 3),
+      showFadingOnlyWhenScrolling: false,
+      fadingEdgeStartFraction: 0.0,
+      fadingEdgeEndFraction: 0.0,
+      startPadding: 0,
+      accelerationDuration: Duration(seconds: 3),
+      accelerationCurve: Curves.easeIn,
+      decelerationDuration: Duration(seconds: 3),
       decelerationCurve: Curves.easeOut,
       textDirection: _useRtlText ? TextDirection.rtl : TextDirection.ltr,
     );
