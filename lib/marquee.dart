@@ -603,14 +603,6 @@ class _MarqueeState extends State<Marquee> with SingleTickerProviderStateMixin {
       "With the given values, the total duration for one round would be "
       "negative. As time travel isn't invented yet, this shouldn't happen.",
     );
-    assert(
-      _linearDuration! >= Duration.zero,
-      "Acceleration and deceleration phase overlap. To fix this, try a "
-      "combination of these approaches:\n"
-      "* Make the text longer, so there's more room to animate within.\n"
-      "* Shorten the accelerationDuration or decelerationDuration.\n"
-      "* Decrease the velocity, so the duration to animate within is longer.\n",
-    );
   }
 
   /// Causes the controller to scroll one round.
